@@ -4,12 +4,13 @@
   "author": "graham.gibbons@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "parcel": "^1.12.4"
+    "three": "^0.112.1"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "parcel index.html"
-  },
-  "devDependencies": {
-    "typescript": "^3.7.4"
   }
 }
