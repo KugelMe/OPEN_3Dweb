@@ -10,13 +10,10 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import modelFile from "./model.obj";
 
+const { innerWidth: width, innerHeight: height } = window;
+
 const scene = new Scene();
-const camera = new PerspectiveCamera(
-  45,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+const camera = new PerspectiveCamera(45, width / height, 0.1, 1000);
 camera.position.set(2, 3, 4);
 
 const light = new DirectionalLight(0xffffff, 0.5);
@@ -24,7 +21,7 @@ light.position.set(1, 2, 3);
 scene.add(light);
 
 const renderer = new WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
