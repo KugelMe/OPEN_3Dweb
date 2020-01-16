@@ -1,4 +1,5 @@
 import {
+  AmbientLight,
   Box3,
   DirectionalLight,
   PerspectiveCamera,
@@ -19,6 +20,7 @@ camera.position.set(2, 3, 4);
 const light = new DirectionalLight(0xffffff, 1);
 light.position.set(1, 2, 3);
 scene.add(light);
+scene.add(new AmbientLight(0x4444444));
 
 const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(width, height);
