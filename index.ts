@@ -7,8 +7,8 @@ import {
   WebGLRenderer
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
-import modelFile from "./model.obj";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import modelFile from "./model.glb";
 
 const { innerWidth: width, innerHeight: height } = window;
 
@@ -16,7 +16,7 @@ const scene = new Scene();
 const camera = new PerspectiveCamera(45, width / height, 0.1, 1000);
 camera.position.set(2, 3, 4);
 
-const light = new DirectionalLight(0xffffff, 0.5);
+const light = new DirectionalLight(0xffffff, 1);
 light.position.set(1, 2, 3);
 scene.add(light);
 
@@ -26,22 +26,15 @@ document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const loader = new OBJLoader();
-loader.load(modelFile, model => {
+const loader = new GLTFLoader();
+loader.load(modelFile, gltf => {
   const bounds = new Box3()
-    .setFromObject(model)
+    .setFromObject(gltf.scene)
     .getBoundingSphere(new Sphere());
-  model.scale.setScalar(1 / bounds.radius);
-  model.position.copy(
-    bounds.center
-      .clone()
-      .negate()
-      .multiplyScalar(1 / bounds.radius)
-  );
-  scene.add(model);
+  controls.target.copy(bounds.center);
+  scene.add(...gltf.scenes);
+  render();
 });
-
-render();
 
 function render() {
   requestAnimationFrame(render);
