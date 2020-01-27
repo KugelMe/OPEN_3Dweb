@@ -34,6 +34,9 @@ export default function view(model: string) {
       .setFromObject(gltf.scene)
       .getBoundingSphere(new Sphere());
     controls.target.copy(bounds.center);
+    camera.position.multiplyScalar(
+      (4 * bounds.radius) / bounds.center.sub(camera.position).length()
+    );
     scene.add(...gltf.scenes);
     render();
   });
