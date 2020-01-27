@@ -7,7 +7,7 @@ if (active && models[active]) {
   view(models[active]);
 } else {
   Object.keys(models).forEach(model => {
-    document.body.innerHTML += `<a href="/#${model}">${model}</a><br />`;
+    document.body.innerHTML += `<a href="./#${model}">${model}</a><br />`;
   });
 }
 
