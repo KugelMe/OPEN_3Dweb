@@ -1,4 +1,4 @@
-import * as fbx2gltf from "fbx2gltf";
+import fbx2gltf from "fbx2gltf";
 import * as fs from "fs";
 import { promisify } from "util";
 
