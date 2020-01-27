@@ -7,11 +7,15 @@
     "three": "^0.112.1"
   },
   "devDependencies": {
+    "@types/node": "^13.5.0",
+    "fbx2gltf": "^0.9.7-p1",
     "parcel": "^1.12.4",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.4"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html -d docs --public-url ./"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html -d docs --public-url ./",
+    "convert": "ts-node convert.ts"
   }
 }
