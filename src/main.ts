@@ -1,13 +1,15 @@
 import models from "./*.glb";
 import view from "./view";
 
-const active = window.location.hash.substring(1);
+const active = decodeURI(window.location.hash.substring(1));
 
 if (active && models[active]) {
   view(models[active]);
 } else {
   Object.keys(models).forEach(model => {
-    document.body.innerHTML += `<a href="./#${model}">${model}</a><br />`;
+    document.body.innerHTML += `<a href="./#${encodeURI(
+      model
+    )}">${model}</a><br />`;
   });
 }
 
