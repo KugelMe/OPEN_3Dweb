@@ -18,9 +18,8 @@ export default function view(model: string) {
   camera.position.set(2, 3, 4);
 
   const light = new DirectionalLight(0xffffff, 1);
-  light.position.set(1, 2, 3);
   scene.add(light);
-  scene.add(new AmbientLight(0x4444444));
+  scene.add(new AmbientLight(0x666666));
 
   const renderer = new WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(width, height);
@@ -44,6 +43,7 @@ export default function view(model: string) {
   function render() {
     requestAnimationFrame(render);
     controls.update();
+    light.position.copy(camera.position);
     renderer.render(scene, camera);
   }
 }
