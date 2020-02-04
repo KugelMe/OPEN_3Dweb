@@ -19,7 +19,7 @@ async function go() {
 
     if (!(await exists(output))) {
       console.log(`Converting ${file}`);
-      await fbx2gltf(input, output);
+      await fbx2gltf(input, output, ["--embed"]);
     }
   }
 }

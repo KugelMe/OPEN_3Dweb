@@ -14,12 +14,12 @@ export default function view(model: string) {
   const { innerWidth: width, innerHeight: height } = window;
 
   const scene = new Scene();
-  const camera = new PerspectiveCamera(45, width / height, 0.1, 1000);
+  const camera = new PerspectiveCamera(45, width / height, 0.1, 100);
   camera.position.set(2, 3, 4);
 
   const light = new DirectionalLight(0xffffff, 1);
   scene.add(light);
-  scene.add(new AmbientLight(0x666666));
+  scene.add(new AmbientLight(0x999999));
 
   const renderer = new WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(width, height);
