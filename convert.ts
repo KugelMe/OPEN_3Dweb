@@ -9,7 +9,7 @@ const models = "./models";
 const src = "./src";
 
 async function go() {
-  const match = /^([^.]+)\.fbx$/;
+  const match = /^([^.]+)\.fbx$/i;
 
   const files = await readdir(models);
 
