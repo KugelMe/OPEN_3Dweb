@@ -5,6 +5,7 @@ import {
   PerspectiveCamera,
   Scene,
   Sphere,
+  Vector3,
   WebGLRenderer
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -32,10 +33,14 @@ export default function view(model: string) {
     const bounds = new Box3()
       .setFromObject(gltf.scene)
       .getBoundingSphere(new Sphere());
-    controls.target.copy(bounds.center);
-    camera.position.multiplyScalar(
-      (4 * bounds.radius) / bounds.center.sub(camera.position).length()
+    const { center, radius } = bounds;
+    controls.target.copy(center);
+    camera.position.copy(
+      center.add(new Vector3(2, 3, 4).normalize().multiplyScalar(3 * radius))
     );
+    camera.near = 0.01 * radius;
+    camera.far = 10 * radius;
+    camera.updateProjectionMatrix();
     scene.add(...gltf.scenes);
     render();
   });
