@@ -4,7 +4,7 @@
   "author": "graham.gibbons@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "three": "^0.112.1"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "@types/node": "^13.5.0",
